@@ -1,0 +1,329 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Absolute Angle Sensor"
+Date "2021-11-28"
+Rev "A"
+Comp "Club Vaudois de Robotique"
+Comment1 "cvra.ch"
+Comment2 "Antoine Albertelli"
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector_Generic:Conn_01x05 J1
+U 1 1 61A3A7FC
+P 1100 1300
+F 0 "J1" H 1018 1717 50  0000 C CNN
+F 1 "Picoblade 5 pin" H 1018 1626 50  0000 C CNN
+F 2 "Connector_Molex:Molex_PicoBlade_53261-0571_1x05-1MP_P1.25mm_Horizontal" H 1100 1300 50  0001 C CNN
+F 3 "https://www.molex.com/pdm_docs/sd/532610571_sd.pdf" H 1100 1300 50  0001 C CNN
+F 4 "WM7623CT-ND" H 1100 1300 50  0001 C CNN "digikey#"
+	1    1100 1300
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0101
+U 1 1 61A3B697
+P 1700 1550
+F 0 "#PWR0101" H 1700 1300 50  0001 C CNN
+F 1 "GND" H 1705 1377 50  0000 C CNN
+F 2 "" H 1700 1550 50  0001 C CNN
+F 3 "" H 1700 1550 50  0001 C CNN
+	1    1700 1550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1300 1500 1700 1500
+Wire Wire Line
+	1700 1500 1700 1550
+$Comp
+L power:+3.3V #PWR0102
+U 1 1 61A3BB28
+P 2250 1300
+F 0 "#PWR0102" H 2250 1150 50  0001 C CNN
+F 1 "+3.3V" H 2265 1473 50  0000 C CNN
+F 2 "" H 2250 1300 50  0001 C CNN
+F 3 "" H 2250 1300 50  0001 C CNN
+	1    2250 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1300 1400 2250 1400
+Wire Wire Line
+	2250 1400 2250 1300
+Text Label 1500 1200 2    50   ~ 0
+SS
+Text Label 1500 1100 2    50   ~ 0
+SCK
+Wire Wire Line
+	1500 1200 1300 1200
+Text Label 2050 1300 2    50   ~ 0
+MISO
+Wire Wire Line
+	1500 1100 1300 1100
+Text Notes 2500 1550 0    50   ~ 0
+On the motor board this connect to P3\n\n- SCK on pin 2 (GPIO_A)\n- SS on pin 3 (GPIO_B)\n- MISO on pin 4 (GPIO_ADC)\n- 3.3V on pin 5 (3v3)\n- GND on pin 6 (GND)
+$Comp
+L Sensor_Magnetic:AS5055A U1
+U 1 1 61A43EC5
+P 2550 3450
+F 0 "U1" H 2994 3496 50  0000 L CNN
+F 1 "AS5055A" H 2994 3405 50  0000 L CNN
+F 2 "Package_DFN_QFN:QFN-16-1EP_4x4mm_P0.65mm_EP2.7x2.7mm" H 2550 2700 50  0001 C CNN
+F 3 "https://ams.com/documents/20143/36005/AS5055A_DS000304_2-00.pdf" H 400 5050 50  0001 C CNN
+	1    2550 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R1
+U 1 1 61A45D3E
+P 2450 2450
+F 0 "R1" H 2509 2496 50  0000 L CNN
+F 1 "15" H 2509 2405 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" H 2450 2450 50  0001 C CNN
+F 3 "~" H 2450 2450 50  0001 C CNN
+	1    2450 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C_Small C1
+U 1 1 61A46521
+P 2250 2650
+F 0 "C1" V 2021 2650 50  0000 C CNN
+F 1 "4u7" V 2112 2650 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 2250 2650 50  0001 C CNN
+F 3 "~" H 2250 2650 50  0001 C CNN
+	1    2250 2650
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+3.3V #PWR0103
+U 1 1 61A4982F
+P 2450 2300
+F 0 "#PWR0103" H 2450 2150 50  0001 C CNN
+F 1 "+3.3V" H 2465 2473 50  0000 C CNN
+F 2 "" H 2450 2300 50  0001 C CNN
+F 3 "" H 2450 2300 50  0001 C CNN
+	1    2450 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2350 2650 2450 2650
+Wire Wire Line
+	2450 2650 2450 2550
+Wire Wire Line
+	2450 2650 2450 2950
+Connection ~ 2450 2650
+$Comp
+L power:GND #PWR0104
+U 1 1 61A4C2C7
+P 2100 2700
+F 0 "#PWR0104" H 2100 2450 50  0001 C CNN
+F 1 "GND" H 2022 2663 50  0000 R CNN
+F 2 "" H 2100 2700 50  0001 C CNN
+F 3 "" H 2100 2700 50  0001 C CNN
+	1    2100 2700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 2650 2100 2650
+Wire Wire Line
+	2100 2650 2100 2700
+Wire Wire Line
+	2450 2350 2450 2300
+$Comp
+L power:+3.3V #PWR0105
+U 1 1 61A54262
+P 2750 2550
+F 0 "#PWR0105" H 2750 2400 50  0001 C CNN
+F 1 "+3.3V" H 2765 2723 50  0000 C CNN
+F 2 "" H 2750 2550 50  0001 C CNN
+F 3 "" H 2750 2550 50  0001 C CNN
+	1    2750 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2550 2950 2550 2650
+Wire Wire Line
+	2550 2650 2750 2650
+Wire Wire Line
+	2750 2650 2750 2550
+$Comp
+L Device:C_Small C2
+U 1 1 61A5541C
+P 3000 2650
+F 0 "C2" V 2771 2650 50  0000 C CNN
+F 1 "100n" V 2862 2650 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 3000 2650 50  0001 C CNN
+F 3 "~" H 3000 2650 50  0001 C CNN
+	1    3000 2650
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR0106
+U 1 1 61A55E90
+P 3150 2900
+F 0 "#PWR0106" H 3150 2650 50  0001 C CNN
+F 1 "GND" H 3155 2727 50  0000 C CNN
+F 2 "" H 3150 2900 50  0001 C CNN
+F 3 "" H 3150 2900 50  0001 C CNN
+	1    3150 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3150 2900 3150 2650
+Wire Wire Line
+	3150 2650 3100 2650
+Wire Wire Line
+	2750 2650 2900 2650
+Connection ~ 2750 2650
+$Comp
+L power:GND #PWR0107
+U 1 1 61A5802B
+P 2600 4050
+F 0 "#PWR0107" H 2600 3800 50  0001 C CNN
+F 1 "GND" H 2605 3877 50  0000 C CNN
+F 2 "" H 2600 4050 50  0001 C CNN
+F 3 "" H 2600 4050 50  0001 C CNN
+	1    2600 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2550 3950 2550 4000
+Wire Wire Line
+	2550 4000 2600 4000
+Wire Wire Line
+	2600 4000 2600 4050
+Wire Wire Line
+	2600 4000 2650 4000
+Wire Wire Line
+	2650 4000 2650 3950
+Connection ~ 2600 4000
+$Comp
+L power:GND #PWR0108
+U 1 1 61A5960B
+P 1600 3700
+F 0 "#PWR0108" H 1600 3450 50  0001 C CNN
+F 1 "GND" H 1605 3527 50  0000 C CNN
+F 2 "" H 1600 3700 50  0001 C CNN
+F 3 "" H 1600 3700 50  0001 C CNN
+	1    1600 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0109
+U 1 1 61A5A1E0
+P 1900 3750
+F 0 "#PWR0109" H 1900 3600 50  0001 C CNN
+F 1 "+3.3V" H 1915 3900 50  0000 C CNN
+F 2 "" H 1900 3750 50  0001 C CNN
+F 3 "" H 1900 3750 50  0001 C CNN
+	1    1900 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2050 3550 1600 3550
+Wire Wire Line
+	1600 3550 1600 3700
+Wire Wire Line
+	1900 3750 2050 3750
+NoConn ~ 2050 3650
+Text Label 1750 3450 0    50   ~ 0
+SS
+Wire Wire Line
+	1750 3450 2050 3450
+Text Label 1750 3350 0    50   ~ 0
+SCK
+Wire Wire Line
+	1750 3350 2050 3350
+$Comp
+L power:+3.3V #PWR0110
+U 1 1 61A5E5CC
+P 1600 3150
+F 0 "#PWR0110" H 1600 3000 50  0001 C CNN
+F 1 "+3.3V" H 1615 3323 50  0000 C CNN
+F 2 "" H 1600 3150 50  0001 C CNN
+F 3 "" H 1600 3150 50  0001 C CNN
+	1    1600 3150
+	1    0    0    -1  
+$EndComp
+Text Label 1750 3250 0    50   ~ 0
+MISO
+Wire Wire Line
+	1750 3250 2050 3250
+Wire Wire Line
+	2050 3150 1600 3150
+Text Notes 1450 3150 2    50   ~ 0
+In 3-wire mode\nwe feed a constant\n"1" on MOSI
+$Comp
+L Device:LED D1
+U 1 1 61A71412
+P 3800 3150
+F 0 "D1" V 3884 3032 50  0000 R CNN
+F 1 "LTST-C191KGKT" V 3793 3032 50  0000 R CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Castellated" H 3800 3150 50  0001 C CNN
+F 3 "https://optoelectronics.liteon.com/upload/download/DS22-2000-228/LTST-C191KGKT.PDF" H 3800 3150 50  0001 C CNN
+F 4 "160-1446-1-ND" V 3800 3150 50  0001 C CNN "digikey#"
+F 5 "Green" V 3702 3032 50  0000 R CNN "color"
+	1    3800 3150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R_Small R2
+U 1 1 61A71A97
+P 3800 3500
+F 0 "R2" H 3859 3546 50  0000 L CNN
+F 1 "270" H 3859 3455 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" H 3800 3500 50  0001 C CNN
+F 3 "~" H 3800 3500 50  0001 C CNN
+	1    3800 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0111
+U 1 1 61A74877
+P 3800 3700
+F 0 "#PWR0111" H 3800 3450 50  0001 C CNN
+F 1 "GND" H 3805 3527 50  0000 C CNN
+F 2 "" H 3800 3700 50  0001 C CNN
+F 3 "" H 3800 3700 50  0001 C CNN
+	1    3800 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0112
+U 1 1 61A74F97
+P 3800 2900
+F 0 "#PWR0112" H 3800 2750 50  0001 C CNN
+F 1 "+3.3V" H 3815 3073 50  0000 C CNN
+F 2 "" H 3800 2900 50  0001 C CNN
+F 3 "" H 3800 2900 50  0001 C CNN
+	1    3800 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 2900 3800 3000
+Wire Wire Line
+	3800 3300 3800 3400
+Wire Wire Line
+	3800 3600 3800 3700
+$Comp
+L Device:R_Small R3
+U 1 1 61AACA25
+P 1700 1300
+F 0 "R3" V 1504 1300 50  0000 C CNN
+F 1 "33" V 1595 1300 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" H 1700 1300 50  0001 C CNN
+F 3 "~" H 1700 1300 50  0001 C CNN
+	1    1700 1300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1300 1300 1600 1300
+Wire Wire Line
+	1800 1300 2050 1300
+$EndSCHEMATC

@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name angle-sensor-board)(type Legacy)(uri ${KIPRJMOD}/angle-sensor-board.lib)(options "")(descr ""))
+)
